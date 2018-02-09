@@ -1,6 +1,6 @@
-node('node1') {
+node('master') {
 stage 'checkout'
-checkout([$class: 'GitSCM', branches: [[name: '*/${BRANCH_NAME}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '5a02a237-d956-42c5-bdcc-866e9579480f', url: 'https://github.com/yogeshdeepti/mavenproject2.git']]])
+checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '5c5bf556-738a-4c78-86c2-c6d8158e52f9', url: 'https://github.com/grvdeep/project2.git']]])
 stage 'build'
 env.DIRPATH=pwd()
 sh "echo ${env.DIRPATH}"
@@ -9,4 +9,5 @@ sh "echo ${env.BRANCH}"
 sh """cd ${env.DIRPATH}/example 
 mvn clean package"""
 }
+
 
